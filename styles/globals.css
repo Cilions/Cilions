@@ -1,3 +1,7 @@
+:root {
+  color-scheme: light dark;
+}
+
 html,
 body {
   padding: 0;
@@ -17,14 +21,4 @@ a {
 h1, p {
   margin-top: 0;
   margin-bottom: 1rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
 }
