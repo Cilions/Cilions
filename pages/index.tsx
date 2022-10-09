@@ -1,17 +1,28 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import useSWR from 'swr'
+
+const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 const Home: NextPage = () => {
+  const { data, error } = useSWR(
+    'https://api.github.com/users/Cilions',
+    fetcher
+  )
+
+  if (error) return <pre>failed to load</pre>
+  if (!data) return <pre>loading...</pre>
+
   return (
     <>
       <Head>
-        <title>Cilions ~ 惣流 weeb.</title>
+        <title>Cilions ~ {data.bio}</title>
       </Head>
 
       {/* v0.2 */}
 
-      <pre>Cilions ~ 惣流 weeb.</pre>
+      <pre>Cilions ~ {data.bio}</pre>
 
       <pre style={{ margin: '2rem 0' }}>✿✿✿✿✿✿✿✿✿✿✿✿✿✿✿✿</pre>
 
@@ -60,7 +71,7 @@ const Home: NextPage = () => {
         <pre>cilions@pm.me</pre>
       </a>
 
-      <pre style={{ margin: '2rem 0' }}>v0.2 ~ @cilions ❤️</pre>
+      <pre style={{ margin: '2rem 0' }}>v0.2.1 ~ @cilions ❤️</pre>
     </>
   )
 }
