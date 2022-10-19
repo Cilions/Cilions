@@ -18,16 +18,24 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Cilions ~ {data.bio}</title>
+        <title>{data.login} ~ {data.bio}</title>
       </Head>
 
       {/* v0.2 */}
 
-      <pre>Cilions ~ {data.bio}</pre>
+      <pre>{data.login} ~ {data.bio}</pre>
 
       <pre style={{ margin: '2rem 0' }}>✿✿✿✿✿✿✿✿✿✿✿✿✿✿✿✿</pre>
 
       <div style={{ margin: '2rem 0' }}>
+
+      <pre>Inst: (private)</pre>
+        <Link href="https://instagram.com/_cilions">
+          <a>
+            <pre>instagram.com/_cilions/</pre>
+          </a>
+        </Link>
+
         <pre>Twitter: (private)</pre>
         <Link href="https://twitter.com/Cilions_">
           <a>
@@ -45,6 +53,15 @@ const Home: NextPage = () => {
         <pre>Discord:</pre>
         <pre>Cilions#3795 (just copy)</pre>
 
+        <pre>Twitch?:</pre>
+        <Link href="https://twitch.tv/cilions_">
+          <a>
+            <pre>twitch.tv/cilions_</pre>
+          </a>
+        </Link>
+
+        <pre style={{ margin: '2rem 0' }}>๑ ⋆˚₊⋆─────────────⋆˚₊⋆ ๑</pre>
+
         <pre>Github:</pre>
         <Link href="https://github.com/Cilions">
           <a>
@@ -52,10 +69,10 @@ const Home: NextPage = () => {
           </a>
         </Link>
 
-        <pre>Gitlab: (private)</pre>
-        <Link href="https://gitlab.com/Cilions">
+        <pre>LinkedIn:</pre>
+        <Link href="https://linkedin.com/in/cilions">
           <a>
-            <pre>gitlab.com/Cilions</pre>
+            <pre>linkedin.com/in/cilions</pre>
           </a>
         </Link>
 
@@ -72,7 +89,7 @@ const Home: NextPage = () => {
         <pre>cilions@pm.me</pre>
       </a>
 
-      <pre style={{ margin: '2rem 0' }}>v0.2.1 ~ @cilions ❤️</pre>
+      <pre style={{ margin: '2rem 0' }}>v0.2.3 ~ @cilions ❤️</pre>
     </>
   )
 }
