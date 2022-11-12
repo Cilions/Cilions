@@ -32,7 +32,7 @@ const Home: NextPage = () => {
       <pre>Inst: (private)</pre>
         <Link href="https://instagram.com/_cilions">
           <a>
-            <pre>instagram.com/_cilions/</pre>
+            <pre>instagram.com/_cilions</pre>
           </a>
         </Link>
 
@@ -89,7 +89,7 @@ const Home: NextPage = () => {
         <pre>cilions@pm.me</pre>
       </a>
 
-      <pre style={{ margin: '2rem 0' }}>v0.2.3 ~ @cilions ❤️</pre>
+      <pre style={{ margin: '2rem 0' }}>v0.2.4 ~ @cilions ❤️</pre>
     </>
   )
 }
