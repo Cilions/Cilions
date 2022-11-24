@@ -51,12 +51,9 @@ const Home: NextPage = () => {
         </Link>
 
         <pre>Discord:</pre>
-        <pre>Cilions#3795 (just copy)</pre>
-
-        <pre>Twitch?:</pre>
-        <Link href="https://twitch.tv/cilions_">
+        <Link href="https://discordapp.com/users/608740202491674634">
           <a>
-            <pre>twitch.tv/cilions_</pre>
+            <pre>discordapp.com/users/608740202491674634</pre>
           </a>
         </Link>
 
