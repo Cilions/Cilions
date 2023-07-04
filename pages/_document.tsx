@@ -5,6 +5,8 @@ export default function Document() {
   return (
     <Html>
       <Head>
+        {/* API GitHub Avatar */}
+        <link rel="icon" href="https://avatars.githubusercontent.com/Cilions" />
         {/* Global site tag (gtag.js) - Google Analytics */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
