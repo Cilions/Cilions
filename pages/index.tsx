@@ -1,3 +1,4 @@
+import { version, name } from '../utils/getPackageInfo'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -52,6 +53,13 @@ const Home: NextPage = () => {
             <pre>instagram.com/_cilions</pre>
           </a>
         </Link>
+
+        <pre>Pinterest:</pre>
+        <Link href="https://pinterest.com/cilions">
+          <a>
+            <pre>pinterest.com/Cilions</pre>
+          </a>
+        </Link>
       </div>
 
       <pre>Mail:</pre>
@@ -59,7 +67,7 @@ const Home: NextPage = () => {
         <pre>cilions@pm.me</pre>
       </a>
 
-      <pre style={{ margin: '2rem 0' }}></pre>
+      <pre style={{ margin: '4rem 0' }}></pre>
 
       <Link href="https://github.com/Cilions/my-app">
         <a>
@@ -71,7 +79,7 @@ const Home: NextPage = () => {
           <pre>Traffic analytics</pre>
         </a>
       </Link>
-      <pre style={{ margin: '2rem 0' }}>v0.2.6 ~ @cilions ❤️</pre>
+      <pre style={{ margin: '2rem 0' }}>v{version} ~ @{name} ❤️</pre>
     </>
   )
 }
