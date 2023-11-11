@@ -41,7 +41,7 @@ const Home: NextPage = () => {
               <Link href={repo.html_url}>
                 <a>{repo.full_name}</a>
               </Link>
-              ({repo.language}) {repo.description}
+              {/* ({repo.language}) {repo.description} */}
             </pre>
           ))}
         </>
