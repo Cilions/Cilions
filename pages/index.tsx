@@ -49,14 +49,14 @@ const Home: NextPage = () => {
 
       <div style={{ margin: '2rem 0' }}>
         <pre>Social:</pre>
-        <Link href="https://x.com/Cilions_">
+        <Link href="https://x.com/cilions_">
           <a>
-            <pre>x.com/Cilions_</pre>
+            <pre>x.com/cilions_</pre>
           </a>
         </Link>
-        <Link href="https://github.com/Cilions">
+        <Link href="https://github.com/cilions">
           <a>
-            <pre>github.com/Cilions</pre>
+            <pre>github.com/cilions</pre>
           </a>
         </Link>
         <Link href="https://linkedin.com/in/cilions">
