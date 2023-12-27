@@ -1,8 +1,8 @@
 'use client'
 
-import { ReCaptchaProvider, useReCaptcha } from 'next-recaptcha-v3'
+import { ReCaptchaProvider } from 'next-recaptcha-v3'
 import useSWR from 'swr'
-import { fetcher } from '@/app/libs'
+import { fetcher } from '@/libs'
 import Link from 'next/link'
 import Script from 'next/script'
 
@@ -24,10 +24,6 @@ export default function Home() {
 
   return (
     <>
-      <ReCaptchaProvider
-        reCaptchaKey="${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}"
-        language="en"
-      >
         {/* Global site tag (gtag.js) - Google Analytics */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
@@ -89,7 +85,6 @@ export default function Home() {
         <pre style={{ margin: '0.5rem 0 0 0' }}>
           v{version} ~ @{user.login} ❤︎‬
         </pre>
-      </ReCaptchaProvider>
     </>
   )
 }
