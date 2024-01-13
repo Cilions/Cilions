@@ -16,6 +16,8 @@ export default function RootLayout({
       <head>
         {/* API GitHub Avatar */}
         <link rel="icon" href="https://avatars.githubusercontent.com/cilions" />
+        {/* Google Verification */}
+        <meta name="google-site-verification" content="4ZKRHU4Do-iPEMttbFstjdMrZ-iiSRQMo3Z0JZpnsvg" />
       </head>
       <body>
         <ReCaptchaProvider
