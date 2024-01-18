@@ -4,7 +4,13 @@ import Script from 'next/script'
 import { ReCaptchaProvider } from 'next-recaptcha-v3'
 
 export const metadata: Metadata = {
-  title: 'cilions.co',
+  openGraph: {
+    title: 'cilions',
+    url: 'https://cilions.co',
+    siteName: 'cilions.co',
+    locale: 'en_US',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({
