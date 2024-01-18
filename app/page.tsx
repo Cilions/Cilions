@@ -1,10 +1,8 @@
 'use client'
 
-import { ReCaptchaProvider } from 'next-recaptcha-v3'
 import useSWR from 'swr'
 import { fetcher } from '@/libs'
 import Link from 'next/link'
-import Script from 'next/script'
 
 export default function Home() {
   const { version } = require('@/package.json')
@@ -24,21 +22,6 @@ export default function Home() {
 
   return (
     <>
-        {/* Global site tag (gtag.js) - Google Analytics */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
-        `}
-        </Script>
-
         <pre>
           {user.login} ~ {user.bio}
         </pre>
