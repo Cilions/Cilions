@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Script from 'next/script'
-import { ReCaptchaProvider } from 'next-recaptcha-v3'
 
 export const metadata: Metadata = {
+  title: 'cilions.co',
   openGraph: {
-    title: 'cilions',
+    title: 'cilions.co',
     url: 'https://cilions.co',
     siteName: 'cilions.co',
     locale: 'en_US',
@@ -38,12 +38,7 @@ export default function RootLayout({
         <meta name="google-site-verification" content="4ZKRHU4Do-iPEMttbFstjdMrZ-iiSRQMo3Z0JZpnsvg" />
       </head>
       <body>
-        <ReCaptchaProvider
-          reCaptchaKey="${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}"
-          language="en"
-        >
-          {children}
-        </ReCaptchaProvider>
+        {children}
       </body>
     </html>
   )

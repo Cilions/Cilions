@@ -57,14 +57,6 @@ export default function Home() {
           <pre>cilions@pm.me</pre>
         </a>
 
-        <pre style={{ margin: '2rem 0 0 0' }}>
-          This site is protected by reCAPTCHA and the Google{' '}
-          <Link href="https://policies.google.com/privacy">Privacy Policy</Link>{' '}
-          and{' '}
-          <Link href="https://policies.google.com/terms">Terms of Service</Link>{' '}
-          apply.
-        </pre>
-
         <pre style={{ margin: '0.5rem 0 0 0' }}>
           v{version} ~ @{user.login} ❤︎‬
         </pre>
