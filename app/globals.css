@@ -1,9 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
 :root {
   color-scheme: light dark;
+  --link-color: #0000EE;
+  --font-jetbrains-mono: 'JetBrains Mono', monospace;
 }
 
-pre {
-  max-width: 100%;
-  overflow-x: auto;
-  white-space: pre-wrap;
+body {
+  font-size: small;
+  font-family: var(--font-jetbrains-mono);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+a {
+  color: var(--link-color);
 }

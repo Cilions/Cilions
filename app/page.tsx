@@ -3,6 +3,7 @@
 import useSWR from 'swr'
 import { fetcher } from '@/libs'
 import Link from 'next/link'
+import Nav from '@/components/Nav'
 
 export default function Home() {
   const { version } = require('@/package.json')
@@ -17,49 +18,46 @@ export default function Home() {
     fetcher
   )
 
-  if (userError || reposError) return <pre>failed to load</pre>
-  if (!user || !repos) return <pre>loading...</pre>
+  if (userError || reposError) return <div>failed to load</div>
+  if (!user || !repos) return <div>loading...</div>
 
   return (
     <>
-        <pre>
-          {user.login} ~ {user.bio}
-        </pre>
+      <Nav />
 
-        <div style={{ margin: '2rem 0' }}>
-          <pre>Open Repos:</pre>
-          <>
-            {repos.map((repo: any) => (
-              <pre key={repo.id}>
-                <Link href={repo.html_url}>{repo.full_name}</Link>{' '}
-                {repo.node_id}
-                <pre style={{ margin: '0' }}>{repo.description}</pre>
-              </pre>
-            ))}
-          </>
-        </div>
+      <div style={{ margin: '2rem 0' }}>
+        <h3>open repos:</h3>
+        <>
+          {repos.map((repo: any) => (
+            <pre key={repo.id}>
+              <Link href={repo.html_url}>{repo.full_name}</Link>
+              <pre style={{ margin: '0' }}>{repo.description}</pre>
+            </pre>
+          ))}
+        </>
+      </div>
 
-        <div style={{ margin: '2rem 0' }}>
-          <pre>Social:</pre>
-          <Link href="https://x.com/cilions_">
-            <pre>x.com/cilions_</pre>
-          </Link>
-          <Link href="https://github.com/cilions">
-            <pre>github.com/cilions</pre>
-          </Link>
-          <Link href="https://linkedin.com/in/cilions">
-            <pre>linkedin.com/in/cilions</pre>
-          </Link>
-        </div>
+      <div style={{ margin: '2rem 0' }}>
+        <h3>social:</h3>
+        <Link href="https://x.com/cilions_">
+          <p>x.com/cilions_</p>
+        </Link>
+        <Link href="https://github.com/cilions">
+          <p>github.com/cilions</p>
+        </Link>
+        <Link href="https://linkedin.com/in/cilions">
+          <p>linkedin.com/in/cilions</p>
+        </Link>
+      </div>
 
-        <pre>Mail:</pre>
-        <a href="mailto:cilions@pm.me">
-          <pre>cilions@pm.me</pre>
-        </a>
+      <h3>mail:</h3>
+      <a href="mailto:cilions@pm.me">
+        <p>cilions@pm.me</p>
+      </a>
 
-        <pre style={{ margin: '0.5rem 0 0 0' }}>
-          v{version} ~ @{user.login} ❤︎‬
-        </pre>
+      <p style={{ margin: '0.5rem 0 0 0' }}>
+        v{version} ~ @{user.login} ❤︎‬
+      </p>
     </>
   )
 }
