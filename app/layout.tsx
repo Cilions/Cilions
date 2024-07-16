@@ -3,6 +3,7 @@ import './globals.css'
 import Script from 'next/script'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://cilions.co'),
   title: 'cilions.co',
   openGraph: {
     title: 'cilions.co',
