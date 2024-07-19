@@ -3,7 +3,9 @@
 import useSWR from 'swr'
 import { fetcher } from '@/libs'
 import Link from 'next/link'
-import Nav from '@/components/Nav'
+import Nav from '@/components/nav'
+import Loading from '@/components/loading'
+import Error from '@/components/error'
 
 export default function Home() {
   const { version } = require('@/package.json')
@@ -18,14 +20,14 @@ export default function Home() {
     fetcher
   )
 
-  if (userError || reposError) return <div>failed to load</div>
-  if (!user || !repos) return <div>loading...</div>
+  if (userError || reposError) return <Error />
+  if (!user || !repos) return <Loading />
 
   return (
     <>
       <Nav />
 
-      <div style={{ margin: '2rem 0' }}>
+      <div>
         <h3>open repos:</h3>
         <>
           {repos.map((repo: any) => (
@@ -56,7 +58,7 @@ export default function Home() {
       </a>
 
       <p style={{ margin: '0.5rem 0 0 0' }}>
-        v{version} ~ @{user.login} ❤︎‬
+        v{version} ~ @{user.login}
       </p>
     </>
   )

@@ -2,21 +2,23 @@
 
 import useSWR from 'swr'
 import { fetcher } from '@/libs'
-import Nav from '@/components/Nav'
+import Nav from '@/components/nav'
+import Loading from '@/components/loading'
+import Error from '@/components/error'
 
-export default function CommitsPage() {
+export default function Logs() {
   const { data: commits, error: commitsError } = useSWR(
-    'https://api.github.com/repos/cilions/my-app/commits',
+    'https://api.github.com/repos/cilions/me/commits',
     fetcher
   )
 
-  if (commitsError) return <div>failed to load</div>
-  if (!commits) return <div>loading...</div>
+  if (commitsError) return <Error />
+  if (!commits) return <Loading />
 
   return (
     <>
       <Nav />
-      <ul>
+      <ul style={{ padding: '0 1rem' }}>
         {commits.map((commit: any) => (
           <li key={commit.sha}>
             <p>
