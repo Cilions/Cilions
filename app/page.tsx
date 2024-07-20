@@ -27,16 +27,14 @@ export default function Home() {
     <>
       <Nav />
 
-      <div>
-        <h3>open repos:</h3>
-        <>
-          {repos.map((repo: any) => (
-            <pre key={repo.id}>
-              <Link href={repo.html_url}>{repo.full_name}</Link>
-              <pre style={{ margin: '0' }}>{repo.description}</pre>
-            </pre>
-          ))}
-        </>
+      <div style={{ margin: '2rem 0' }}>
+      <h3>open repos:</h3>
+        {repos.map((repo: any) => (
+          <p key={repo.id}>
+            <Link href={repo.html_url}>{repo.full_name}</Link>
+            <div style={{ margin: '0' }}>{repo.description}</div>
+          </p>
+        ))}
       </div>
 
       <div style={{ margin: '2rem 0' }}>
