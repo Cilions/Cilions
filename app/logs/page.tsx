@@ -1,24 +1,24 @@
-'use client'
+"use client";
 
-import useSWR from 'swr'
-import { fetcher } from '@/libs'
-import Nav from '@/components/nav'
-import Loading from '@/components/loading'
-import Error from '@/components/error'
+import useSWR from "swr";
+import { fetcher } from "@/libs";
+import Nav from "@/components/Nav";
+import Loading from "@/components/Loading";
+import Error from "@/components/Error";
 
 export default function Logs() {
   const { data: commits, error: commitsError } = useSWR(
-    'https://api.github.com/repos/cilions/me/commits',
+    "https://api.github.com/repos/cilions/me/commits",
     fetcher
-  )
+  );
 
-  if (commitsError) return <Error />
-  if (!commits) return <Loading />
+  if (commitsError) return <Error />;
+  if (!commits) return <Loading />;
 
   return (
     <>
       <Nav />
-      <ul style={{ padding: '0 1rem' }}>
+      <ul style={{ padding: "0 1rem" }}>
         {commits.map((commit: any) => (
           <li key={commit.sha}>
             <p>
@@ -30,5 +30,5 @@ export default function Logs() {
         ))}
       </ul>
     </>
-  )
+  );
 }
