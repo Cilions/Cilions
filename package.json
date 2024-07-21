@@ -1,6 +1,6 @@
 {
   "name": "cilions",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,18 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/font": "^14.2.5",
-    "next": "14.0.4",
+    "next": "14.2.5",
     "react": "^18",
-    "react-dom": "^18",
-    "swr": "^2.2.4"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.0.4",
+    "eslint-config-next": "14.2.5",
     "typescript": "^5"
   }
 }
