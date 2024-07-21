@@ -1,63 +1,69 @@
-"use client";
-
-import useSWR from "swr";
-import { fetcher } from "@/libs";
+// app/page.tsx
 import Link from "next/link";
 import Nav from "@/components/Nav";
-import Loading from "@/components/Loading";
-import Error from "@/components/Error";
+import { version } from "@/package.json";
 
-export default function Home() {
-  const { version } = require("@/package.json");
+interface User {
+  login: string;
+}
 
-  const { data: user, error: userError } = useSWR(
-    "https://api.github.com/users/cilions",
-    fetcher
-  );
+interface Repo {
+  id: number;
+  full_name: string;
+  html_url: string;
+  description: string;
+}
 
-  const { data: repos, error: reposError } = useSWR(
-    "https://api.github.com/users/cilions/repos",
-    fetcher
-  );
+async function getData() {
+  const [userData, reposData] = await Promise.all([
+    fetch('https://api.github.com/users/cilions').then(res => res.json()),
+    fetch('https://api.github.com/users/cilions/repos').then(res => res.json())
+  ]);
 
-  if (userError || reposError) return <Error />;
-  if (!user || !repos) return <Loading />;
+  return { user: userData as User, repos: reposData as Repo[] };
+}
+
+export default async function Home() {
+  const { user, repos } = await getData();
 
   return (
     <>
       <Nav />
+      <main>
+        <section>
+          <h3>Open repos:</h3>
+          {repos.map((repo) => (
+            <div key={repo.id}>
+              <Link href={repo.html_url}>{repo.full_name}</Link>
+              <p>{repo.description}</p>
+            </div>
+          ))}
+        </section>
 
-      <div>
-        <h3>open repos:</h3>
-        {repos.map((repo: any) => (
-          <p key={repo.id}>
-            <Link href={repo.html_url}>{repo.full_name}</Link>
-            <div style={{ margin: "0" }}>{repo.description}</div>
-          </p>
-        ))}
-      </div>
+        <section style={{ margin: "2rem 0" }}>
+          <h3>Social:</h3>
+          {[
+            { href: "https://x.com/cilions_", text: "x.com/cilions_" },
+            { href: "https://github.com/cilions", text: "github.com/cilions" },
+            { href: "https://linkedin.com/in/cilions", text: "linkedin.com/in/cilions" }
+          ].map(({ href, text }) => (
+            <Link key={href} href={href}>
+              <p>{text}</p>
+            </Link>
+          ))}
+        </section>
 
-      <div style={{ margin: "2rem 0" }}>
-        <h3>social:</h3>
-        <Link href="https://x.com/cilions_">
-          <p>x.com/cilions_</p>
-        </Link>
-        <Link href="https://github.com/cilions">
-          <p>github.com/cilions</p>
-        </Link>
-        <Link href="https://linkedin.com/in/cilions">
-          <p>linkedin.com/in/cilions</p>
-        </Link>
-      </div>
+        <section>
+          <h3>Mail:</h3>
+          <a href="mailto:cilions@pm.me">
+            <p>cilions@pm.me</p>
+          </a>
+        </section>
 
-      <h3>mail:</h3>
-      <a href="mailto:cilions@pm.me">
-        <p>cilions@pm.me</p>
-      </a>
-
-      <p style={{ margin: "0.5rem 0 0 0" }}>
-        v{version} ~ @{user.login}
-      </p>
+        <footer style={{ margin: "0.5rem 0 0 0" }}>
+          <p>v{version} ~ @{user?.login}</p>
+        </footer>
+      </main>
     </>
   );
 }

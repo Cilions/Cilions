@@ -1,8 +1,6 @@
-"use client";
-
 import Nav from "@/components/Nav";
 
-export default function Posts() {
+export default async function Posts() {
   return (
     <>
       <Nav />
