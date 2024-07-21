@@ -1,4 +1,4 @@
-import Nav from "@/components/Nav";
+import Nav from "@/components/nav";
 
 interface Commit {
   sha: string;
@@ -13,10 +13,12 @@ interface Commit {
 
 async function getCommits() {
   const [commitsData] = await Promise.all([
-    fetch('https://api.github.com/repos/cilions/me/commits').then(res => res.json()),
+    fetch("https://api.github.com/repos/cilions/me/commits").then((res) =>
+      res.json()
+    ),
   ]);
 
-  return { commits: commitsData as Commit[]};
+  return { commits: commitsData as Commit[] };
 }
 
 export default async function Logs() {

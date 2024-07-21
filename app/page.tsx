@@ -1,6 +1,6 @@
 // app/page.tsx
 import Link from "next/link";
-import Nav from "@/components/Nav";
+import Nav from "@/components/nav";
 import { version } from "@/package.json";
 
 interface User {
@@ -16,8 +16,10 @@ interface Repo {
 
 async function getData() {
   const [userData, reposData] = await Promise.all([
-    fetch('https://api.github.com/users/cilions').then(res => res.json()),
-    fetch('https://api.github.com/users/cilions/repos').then(res => res.json())
+    fetch("https://api.github.com/users/cilions").then((res) => res.json()),
+    fetch("https://api.github.com/users/cilions/repos").then((res) =>
+      res.json()
+    ),
   ]);
 
   return { user: userData as User, repos: reposData as Repo[] };
@@ -45,7 +47,10 @@ export default async function Home() {
           {[
             { href: "https://x.com/cilions_", text: "x.com/cilions_" },
             { href: "https://github.com/cilions", text: "github.com/cilions" },
-            { href: "https://linkedin.com/in/cilions", text: "linkedin.com/in/cilions" }
+            {
+              href: "https://linkedin.com/in/cilions",
+              text: "linkedin.com/in/cilions",
+            },
           ].map(({ href, text }) => (
             <Link key={href} href={href}>
               <p>{text}</p>
@@ -61,7 +66,9 @@ export default async function Home() {
         </section>
 
         <footer style={{ margin: "0.5rem 0 0 0" }}>
-          <p>v{version} ~ @{user?.login}</p>
+          <p>
+            v{version} ~ @{user?.login}
+          </p>
         </footer>
       </main>
     </>
