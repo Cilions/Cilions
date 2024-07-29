@@ -1,4 +1,3 @@
-// app/page.tsx
 import Link from "next/link";
 import Nav from "@/components/nav";
 import { version } from "@/package.json";

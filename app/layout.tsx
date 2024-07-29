@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import './globals.css'
 import Script from 'next/script'
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
-} 
+}
 
 export default function RootLayout({
   children,
@@ -39,6 +40,7 @@ export default function RootLayout({
         <meta name="google-site-verification" content="4ZKRHU4Do-iPEMttbFstjdMrZ-iiSRQMo3Z0JZpnsvg" />
       </head>
       <body>
+        <Analytics/>
         {children}
       </body>
     </html>
