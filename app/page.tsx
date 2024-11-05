@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Nav from "@/components/nav";
 import { version } from "@/package.json";
 
 interface User {
@@ -16,11 +15,8 @@ interface Repo {
 async function getData() {
   const [userData, reposData] = await Promise.all([
     fetch("https://api.github.com/users/cilions").then((res) => res.json()),
-    fetch("https://api.github.com/users/cilions/repos").then((res) =>
-      res.json()
-    ),
+    fetch("https://api.github.com/users/cilions/repos").then((res) => res.json()),
   ]);
-
   return { user: userData as User, repos: reposData as Repo[] };
 }
 
@@ -28,48 +24,39 @@ export default async function Home() {
   const { user, repos } = await getData();
 
   return (
-    <>
-      <Nav />
-      <main>
-        <section>
-          <h3>Open repos:</h3>
+    <div className="flex flex-col min-h-screen">
+      <main className="m-0 sm:m-4 flex-grow">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {repos.map((repo) => (
-            <div key={repo.id}>
-              <Link href={repo.html_url}>{repo.full_name}</Link>
-              <p>{repo.description}</p>
+            <div
+              key={repo.id}
+              className="rounded-md p-4 transition duration-300 hover:shadow-md flex flex-col"
+            >
+              <Link href={repo.html_url}>
+                <h3 className="text-lg font-medium">{repo.full_name}</h3>
+              </Link>
+              <p className="text-gray-600 dark:text-gray-100 flex-grow">{repo.description}</p>
             </div>
           ))}
-        </section>
+        </div>
+      </main>
 
-        <section style={{ margin: "2rem 0" }}>
-          <h3>Social:</h3>
+      <footer className="p-4 flex flex-row items-center">
+        <div className="space-x-4 font-medium">
           {[
             { href: "https://x.com/cilions_", text: "x.com/cilions_" },
             { href: "https://github.com/cilions", text: "github.com/cilions" },
-            {
-              href: "https://linkedin.com/in/cilions",
-              text: "linkedin.com/in/cilions",
-            },
+            { href: "https://linkedin.com/in/cilions", text: "linkedin.com/in/cilions" },
           ].map(({ href, text }) => (
             <Link key={href} href={href}>
               <p>{text}</p>
             </Link>
           ))}
-        </section>
-
-        <section>
-          <h3>Mail:</h3>
-          <a href="mailto:cilions@pm.me">
+          <Link href="mailto:cilions@pm.me">
             <p>cilions@pm.me</p>
-          </a>
-        </section>
-
-        <footer style={{ margin: "0.5rem 0 0 0" }}>
-          <p>
-            v{version} ~ @{user?.login}
-          </p>
-        </footer>
-      </main>
-    </>
+          </Link>
+        </div>
+      </footer>
+    </div>
   );
 }
