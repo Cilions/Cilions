@@ -32,10 +32,10 @@ export default async function Home() {
               key={repo.id}
               className="rounded-md p-4 transition duration-300 hover:shadow-md flex flex-col"
             >
-              <Link href={repo.html_url}>
+              <Link href={repo.html_url} rel="noopener noreferrer" target="_blank">
                 <h3 className="text-lg font-medium">{repo.full_name}</h3>
               </Link>
-              <p className="text-gray-600 dark:text-gray-100 flex-grow">{repo.description}</p>
+              <p className="flex-grow">{repo.description}</p>
             </div>
           ))}
         </div>
@@ -48,7 +48,7 @@ export default async function Home() {
             { href: "https://github.com/cilions", text: "github.com/cilions" },
             { href: "https://linkedin.com/in/cilions", text: "linkedin.com/in/cilions" },
           ].map(({ href, text }) => (
-            <Link key={href} href={href}>
+            <Link key={href} href={href} rel="noopener noreferrer" target="_blank">
               <p>{text}</p>
             </Link>
           ))}

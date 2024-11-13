@@ -7,33 +7,16 @@
 :root {
   color-scheme: light dark;
   --font-jetbrains-mono: 'JetBrains Mono', monospace;
-
-  /* Light theme */
   --link-color-light: #0000EE;
-  --text-color-light: #000000;
-
-  /* Dark Theme */
-  --link-color-dark: #6666FF;
-  --text-color-dark: #FFFFFF;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --link-color: var(--link-color-light);
-    --text-color: var(--text-color-light);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --link-color: var(--link-color-dark);
-    --text-color: var(--text-color-dark);
-  }
+  --text-color-light: #ffffff;
 }
 
 *, body {
   font-size: small;
+  font-weight: bold;
   font-family: var(--font-jetbrains-mono);
+  background-color: var(--link-color-light);
+  color: var(--text-color-light);
 }
 
 h1, h2, h3, h4, h5, h6 {
