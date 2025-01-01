@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import './globals.css'
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="theme-color" content="#0000EE" />
         <link rel="icon" href="https://avatars.githubusercontent.com/cilions" />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
@@ -40,6 +42,7 @@ export default function RootLayout({
         <meta name="google-site-verification" content="4ZKRHU4Do-iPEMttbFstjdMrZ-iiSRQMo3Z0JZpnsvg" />
       </head>
       <body>
+        <SpeedInsights />
         <Analytics/>
         {children}
       </body>
