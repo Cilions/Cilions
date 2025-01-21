@@ -172,18 +172,12 @@ export default function Home() {
 
       <footer className="p-8">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-4">
-          <div className="flex space-x-6 text-sm">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 text-sm items-center">
             {[
               { href: "https://x.com/cilions_", text: "x.com/cilions_" },
-              {
-                href: "https://github.com/cilions",
-                text: "github.com/cilions",
-              },
-              {
-                href: "https://linkedin.com/in/cilions",
-                text: "linkedin.com/in/cilions",
-              },
-              { href: "mailto:cilions@pm.me", text: "cilions@pm.me" },
+              { href: "https://github.com/cilions", text: "github.com/cilions" },
+              { href: "https://linkedin.com/in/cilions", text: "linkedin.com/in/cilions" },
+              { href: "mailto:cilions@pm.me", text: "cilions@pm.me" }
             ].map(({ href, text }) => (
               <Link
                 key={href}
@@ -193,26 +187,13 @@ export default function Home() {
                 rel="noopener noreferrer"
               >
                 {text}
-                <svg
-                  className="ml-1 inline-block"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M5 3H13V11M13 3L3 13"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  />
+                <svg className="ml-1 inline-block" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 3H13V11M13 3L3 13" stroke="currentColor" strokeWidth="1.5"/>
                 </svg>
               </Link>
             ))}
           </div>
-          <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} cilions. All rights reserved.
-          </p>
+          <p className="text-sm text-gray-500">© {new Date().getFullYear()} cilions. All rights reserved.</p>
         </div>
       </footer>
     </div>

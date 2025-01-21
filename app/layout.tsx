@@ -6,11 +6,11 @@ import Script from 'next/script'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://cilions.co'),
-  title: 'cilions.co',
+  title: 'cilions',
   openGraph: {
-    title: 'cilions.co',
+    title: 'cilions',
     url: 'https://cilions.co',
-    siteName: 'cilions.co',
+    siteName: 'cilions',
     locale: 'en_US',
     type: 'website',
   },
