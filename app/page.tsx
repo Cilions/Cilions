@@ -108,7 +108,7 @@ export default async function Home() {
 
       <footer className="p-8">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-4">
-          <div className="flex space-x-6 text-sm">
+          <div className="flex flex-wrap gap-4 justify-center text-sm">
             {[
               { href: "https://x.com/cilions_", text: "x.com/cilions_" },
               {
@@ -148,4 +148,3 @@ export default async function Home() {
     </div>
   )
 }
-
