@@ -6,11 +6,11 @@ import Script from 'next/script'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://cilions.co'),
-  title: 'cilions.co',
+  title: 'cilions',
   openGraph: {
-    title: 'cilions.co',
+    title: 'cilions',
     url: 'https://cilions.co',
-    siteName: 'cilions.co',
+    siteName: 'cilions',
     locale: 'en_US',
     type: 'website',
   },
@@ -24,7 +24,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="theme-color" content="#0000EE" />
         <link rel="icon" href="https://avatars.githubusercontent.com/cilions" />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}

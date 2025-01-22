@@ -1,61 +1,150 @@
-import Link from "next/link";
+import Link from "next/link"
+import Image from "next/image"
+import Nav from "@/components/Nav"
 
 interface User {
-  login: string;
+  login: string
+  avatar_url: string
+  bio: string
 }
 
-interface Repo {
-  id: number;
-  full_name: string;
-  html_url: string;
-  description: string;
+async function fetchUserData(): Promise<User> {
+  const userData = await fetch("https://api.github.com/users/cilions")
+  const userJson = await userData.json()
+  return userJson
 }
 
-async function getData() {
-  const [userData, reposData] = await Promise.all([
-    fetch("https://api.github.com/users/cilions").then((res) => res.json()),
-    fetch("https://api.github.com/users/cilions/repos").then((res) => res.json()),
-  ]);
-  return { user: userData as User, repos: reposData as Repo[] };
+async function fetchLastUpdate(): Promise<string> {
+  const lastCommitResponse = await fetch("https://api.github.com/repos/cilions/cilions/commits")
+  const commits = await lastCommitResponse.json()
+  const lastCommitDate = new Date(commits[0].commit.author.date)
+  return `${lastCommitDate.toLocaleString("default", {
+    month: "short",
+  })}, ${lastCommitDate.getFullYear()}`
 }
 
 export default async function Home() {
-  const { user, repos } = await getData();
+  const user = await fetchUserData()
+  const lastUpdate = await fetchLastUpdate()
 
   return (
     <div className="flex flex-col min-h-screen">
-      <main className="m-0 sm:m-4 flex-grow">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {repos.map((repo) => (
-            <div
-              key={repo.id}
-              className="rounded-md p-4 transition duration-300 hover:shadow-md flex flex-col"
-            >
-              <Link href={repo.html_url} rel="noopener noreferrer" target="_blank">
-                <h3 className="text-lg font-medium">{repo.full_name}</h3>
+      <main className="flex-grow p-8 max-w-6xl mx-auto w-full">
+        <nav className="mb-16">
+          <ul className="flex space-x-6">
+            <li>
+              <button className="flex items-center hover:text-gray-600 transition-colors">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 13L2 3L10 8L2 13Z" fill="currentColor"></path>
+                </svg>
+                <span className="ml-2">projects</span>
+              </button>
+            </li>
+            <li>
+              <Nav className="hover:text-gray-600 transition-colors group" text="blog" />
+            </li>
+            <li>
+              <Link
+                href="https://linkedin.com/in/cilions"
+                className="flex items-center hover:text-gray-600 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                resume
+                <svg
+                  className="ml-1"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M5 3H13V11M13 3L3 13" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
               </Link>
-              <p className="flex-grow">{repo.description}</p>
+            </li>
+          </ul>
+        </nav>
+
+        <div className="mb-16">
+          {user && (
+            <>
+              <div className="flex items-center gap-6 mb-6">
+                <Image
+                  src={user.avatar_url || "/placeholder.svg"}
+                  alt="Profile"
+                  width={64}
+                  height={64}
+                  className="rounded-full"
+                />
+                <div>
+                  <h1 className="text-2xl font-medium mb-2">
+                    {user.login} <span className="text-gray-500 font-normal">/si.li.ons/</span>
+                  </h1>
+                  <p className="text-gray-600">
+                    {user.bio || "frontend developer, focusing on web development and user interfaces."}
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+
+        <div className="mb-12">
+          <p className="text-sm text-gray-500 italic mb-4">Updated in {lastUpdate}</p>
+          <p className="font-serif italic text-gray-600">&ldquo;I can make something good.&rdquo;</p>
+        </div>
+
+        <div>
+          <Link href="https://ai.cilions.co" className="block group" target="_blank" rel="noopener noreferrer">
+            <div className="aspect-video bg-gray-100 rounded-lg mb-4 overflow-hidden transition-all duration-300 group-hover:shadow-lg">
+              <Image src="/aisw.png" alt="AISW" width={1200} height={675} className="w-full h-full object-cover" />
             </div>
-          ))}
+            <h3 className="font-medium group-hover:underline">AISW</h3>
+            <p className="text-gray-600">2025 · Ai Switcher</p>
+          </Link>
         </div>
       </main>
 
-      <footer className="p-4 flex flex-row items-center">
-        <div className="space-x-4 font-medium">
-          {[
-            { href: "https://x.com/cilions_", text: "x.com/cilions_" },
-            { href: "https://github.com/cilions", text: "github.com/cilions" },
-            { href: "https://linkedin.com/in/cilions", text: "linkedin.com/in/cilions" },
-          ].map(({ href, text }) => (
-            <Link key={href} href={href} rel="noopener noreferrer" target="_blank">
-              <p>{text}</p>
-            </Link>
-          ))}
-          <Link href="mailto:cilions@pm.me">
-            <p>cilions@pm.me</p>
-          </Link>
+      <footer className="p-8">
+        <div className="max-w-6xl mx-auto flex flex-col items-center gap-4">
+          <div className="flex flex-wrap gap-4 justify-center text-sm">
+            {[
+              { href: "https://x.com/cilions_", text: "x.com/cilions_" },
+              {
+                href: "https://github.com/cilions",
+                text: "github.com/cilions",
+              },
+              {
+                href: "https://linkedin.com/in/cilions",
+                text: "linkedin.com/in/cilions",
+              },
+              { href: "mailto:cilions@pm.me", text: "cilions@pm.me" },
+            ].map(({ href, text }) => (
+              <Link
+                key={href}
+                href={href}
+                className="hover:text-gray-600 transition-colors flex items-center"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {text}
+                <svg
+                  className="ml-1 inline-block"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M5 3H13V11M13 3L3 13" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+              </Link>
+            ))}
+          </div>
+          <p className="text-sm text-gray-500">© {new Date().getFullYear()} cilions. All rights reserved.</p>
         </div>
       </footer>
     </div>
-  );
+  )
 }
