@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import Nav from "@/components/Nav"
+import Nav from "@/components/nav"
 
 interface User {
   login: string
@@ -95,14 +95,12 @@ export default async function Home() {
           <p className="font-serif italic text-gray-600">&ldquo;I can make something good.&rdquo;</p>
         </div>
 
-        <div>
-          <Link href="https://ai.cilions.co" className="block group" target="_blank" rel="noopener noreferrer">
-            <div className="aspect-video bg-gray-100 rounded-lg mb-4 overflow-hidden transition-all duration-300 group-hover:shadow-lg">
-              <Image src="/aisw.png" alt="AISW" width={1200} height={675} className="w-full h-full object-cover" />
-            </div>
-            <h3 className="font-medium group-hover:underline">AISW</h3>
-            <p className="text-gray-600">2025 · Ai Switcher</p>
-          </Link>
+        <div className="block group">
+          <div className="aspect-video bg-gray-100 rounded-lg mb-4 overflow-hidden transition-all duration-300 group-hover:shadow-lg flex items-center justify-center">
+            <p className="text-gray-500 text-lg">Coming soon...</p>
+          </div>
+          <h3 className="font-medium">AISW</h3>
+          <p className="text-gray-600">2025 · Your Gateway to Multiple AI Models</p>
         </div>
       </main>
 
