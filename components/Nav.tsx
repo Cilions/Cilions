@@ -1,25 +1,18 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
+import { useState } from "react";
+import type { Nav } from "@/utils/interfaces";
 
-interface NavProps {
-  className?: string;
-  text: string;
-  hoverText?: string;
-}
-
-const Nav: React.FC<NavProps> = ({ className = "", text, hoverText = "soon!" }) => {
-  const [currentText, setCurrentText] = useState(text)
+export default function Nav({ className = "", text, hoverText = "soon!" }: Nav) {
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <button
       className={className}
-      onMouseEnter={() => setCurrentText(hoverText)}
-      onMouseLeave={() => setCurrentText(text)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {currentText}
+      {isHovered ? hoverText : text}
     </button>
   );
-};
-
-export default Nav;
+}

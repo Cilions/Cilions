@@ -1,4 +1,4 @@
-import { User } from "@/utils/interfaces"
+import type { User } from "@/utils/interfaces"
 
 export async function fetchUserData(): Promise<User> {
   const userData = await fetch(
