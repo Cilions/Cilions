@@ -1,27 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import Nav from "@/components/nav"
-
-interface User {
-  login: string
-  avatar_url: string
-  bio: string
-}
-
-async function fetchUserData(): Promise<User> {
-  const userData = await fetch("https://api.github.com/users/cilions")
-  const userJson = await userData.json()
-  return userJson
-}
-
-async function fetchLastUpdate(): Promise<string> {
-  const lastCommitResponse = await fetch("https://api.github.com/repos/cilions/cilions/commits")
-  const commits = await lastCommitResponse.json()
-  const lastCommitDate = new Date(commits[0].commit.author.date)
-  return `${lastCommitDate.toLocaleString("default", {
-    month: "short",
-  })}, ${lastCommitDate.getFullYear()}`
-}
+import { fetchUserData, fetchLastUpdate } from "@/app/api/users"
 
 export default async function Home() {
   const user = await fetchUserData()
